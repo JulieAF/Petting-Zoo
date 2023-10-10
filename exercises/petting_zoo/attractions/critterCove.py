@@ -1,15 +1,17 @@
-class WetLands:
+from . import Attraction
 
-    def __init__(self, attraction_name, description):
-        self.attraction_name = attraction_name
-        self.description = description
-        self.animals = list()
 
-    def add_animal(self, animal):
-        self.animals.append(animal)
+class WetLands(Attraction):
+
+    def __init__(self, name, description):
+        super().__init__(name, description)
 
     def display(self):
         print(f"{self.attraction_name} is where you'll find {
               self.description}, like")
         for animal in self.animals:
             print(f" * {animal}")
+
+    @property
+    def last_critter_added(self):
+        return self.animals[-1] if self.animals else None
