@@ -1,27 +1,23 @@
 from datetime import date
 
 
-class Queen:
-
+class Animal:
     def __init__(self, name, species, food, chip_num):
         self.name = name
         self.species = species
-        self.date_added = date.today()
-        self.slithering = True
         self.food = food
-        self.chip_number = chip_num
+        self.__chip_num = chip_num
+        self.date_added = date.today()
 
     def feed(self):
         print(f'{self.name} was fed {self.food} on {
               date.today().strftime("%m/%d/%Y")}')
 
-    def __str__(self):
-        return f"{self.name} the {self.species}"
-
     @property
     def chip_num(self):
-        return self.chip_num
+        return self.__chip_num
 
-    @serial_num.setter
-    def serial_num(self, number):
-        pass
+    @chip_num.setter
+    def chip_num(self, number):
+        if self.__chip_num is None:
+            self.__chip_num = number
